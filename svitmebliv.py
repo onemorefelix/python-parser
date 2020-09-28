@@ -4,7 +4,7 @@ import re
 from bs4 import BeautifulSoup
 import time
 
-FOLDER = 'DOWNLOAD'
+FOLDER = 'SvitMebliv'
 URL = 'https://www.svit-mebliv.ua/catalog'
 DOMAIN = 'https://www.svit-mebliv.ua'
 
