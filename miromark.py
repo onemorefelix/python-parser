@@ -59,7 +59,8 @@ def get_single_category_data(cat_url, cat_name):
 
         advert_url = block.get('href')
         advert_name = block.find('div', class_='link-news-content').get_text(strip=True)
-        name = advert_name.replace('"', '_')
+        adv_name = advert_name.replace('/', '_')
+        name = adv_name.replace('"', '_')
         get_advert(advert_url, name, cat_name)
     #
     # next_page = get_next_page(soup)
