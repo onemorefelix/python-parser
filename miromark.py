@@ -18,7 +18,6 @@ def main():
     else:
         print('### Folder already exists. Starting the Download')
 
-
     data = get_categories_url()
     for category in data:
         get_single_category_data(category['cat_url'], category['cat_name'])
@@ -56,7 +55,6 @@ def get_single_category_data(cat_url, cat_name):
 
     blocks = soup.find_all('a', class_='uk-transition-toggle link-news')
     for block in blocks:
-
         advert_url = block.get('href')
         advert_name = block.find('div', class_='link-news-content').get_text(strip=True)
         adv_name = advert_name.replace('/', '_')
@@ -88,14 +86,15 @@ def get_advert(advert_url, advert_name, category_name):
             # data_product = advert.get_text(strip=True)
             if image:
                 download_image(image, path, increment)
-    # else:
-    #     image = soup.find('div', class_='product-card-slider-top__img').find('img').get('src')
-    #     download_image(image, path)
+    else:
+        image = soup.find('div', class_='product-card-slider-top__img').find('img').get('src')
+        download_image(image, path, increment)
 
     if advert_img2:
         for advert in advert_img:
             increment += 1
-            image = advert.get('href')
+            image = advert.find('a').get('href')
+            print(image)
             if image:
                 download_image(image, path, increment)
 
