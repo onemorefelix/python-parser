@@ -78,6 +78,7 @@ def get_advert(advert_url, advert_name, category_name):
     soup = get_content(advert_url)
     advert_img = soup.find_all('div', class_='uk-transition-toggle element-link')
     advert_img2 = soup.find_all('a', class_='uk-inline-clip uk-transition-toggle')
+
     increment = 0
     if advert_img:
         for advert in advert_img:
@@ -91,10 +92,9 @@ def get_advert(advert_url, advert_name, category_name):
         download_image(image, path, increment)
 
     if advert_img2:
-        for advert in advert_img:
+        for advert in advert_img2:
             increment += 1
-            image = advert.find('a').get('href')
-            print(image)
+            image = advert.get('href')
             if image:
                 download_image(image, path, increment)
 
@@ -116,6 +116,7 @@ def download_image(image, path, increment):
     if name:
         check_img = os.path.isfile(path + '/' + str(increment) + '_' + name[0])
         if not check_img:
+            print(full_url)
             p = requests.get(full_url)
             if name:
                 out = open(path + '/' + str(increment) + '_' + name[0], "wb")
