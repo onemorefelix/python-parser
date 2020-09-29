@@ -116,7 +116,6 @@ def download_image(image, path, increment):
     if name:
         check_img = os.path.isfile(path + '/' + str(increment) + '_' + name[0])
         if not check_img:
-            print(full_url)
             p = requests.get(full_url)
             if name:
                 out = open(path + '/' + str(increment) + '_' + name[0], "wb")
