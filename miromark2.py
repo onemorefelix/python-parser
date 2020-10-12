@@ -9,7 +9,7 @@ FOLDER = 'D:/DOWN/MiroMark'
 DOMAIN = 'http://miromark.com.ua/'
 
 start_time = time.time()
-
+#rr
 
 def main():
     check_path = os.path.exists(FOLDER)
